@@ -6,7 +6,13 @@
 
     <main>
         <section class="container">
-            <h1>Curernt Series</h1>
+            <div class="d-flex justify-content-between ">
+                <h1>Curernt Series</h1>
+                <h2>Add Series
+                    <a class="btn btn-primary" href="{{ route('comics.create') }}" role="button">New</a>
+                </h2>
+
+            </div>
             <div class="row">
                 @foreach ($comics as $comic)
                     <div class="col-6 col-md-4 col-lg-3 col-xxl-2 p-3">
