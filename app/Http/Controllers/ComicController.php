@@ -37,7 +37,20 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+        $formData = $request->all();
+        $newComic = new Comic();
+        $newComic->title = $formData['title'];
+        $newComic->description = $formData['description'];
+        $newComic->thumb = 'https://picsum.photos/id/' . random_int(1, 200) . '/200/300';
+        $newComic->price = $formData['price'];
+        $newComic->sale_date = '2023-12-12';
+        $newComic->series = $formData['series'];
+        $newComic->type = $formData['type'];
+
+        $newComic->save();
+
+        return to_route('comics.index');
     }
 
     /**
