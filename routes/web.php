@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ComicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,25 +20,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-// comics
+// comics resource route
 
-Route::get('/comics', function () {
-    $comics = config('db.comics');
-    return view('comics.index', compact('comics'));
-})->name('comics.index');
+Route::resource('comics', ComicController::class);
 
-Route::get('/comics/{id}', function ($id) {
-    $comics = config('db.comics');
-    $comic = null;
-    foreach ($comics as $item) {
-        if ($item['id'] == $id) {
-            $comic = $item;
-        }
-    }
-    if ($comic) {
-        return view('comics.show', compact('comic'));
-    }
-})->name('comics.show');
 
 // movies
 
