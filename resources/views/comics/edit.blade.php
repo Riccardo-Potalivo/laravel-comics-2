@@ -17,13 +17,17 @@
                     placeholder="inserisci un prezzo" class="form-control ">
                 <input type="text" id="type" name="type" value="{{ $comic->type }}"
                     placeholder="inserisci un type" class="form-control ">
-                <button type="submit" class="btn btn-success">Invia</button>
-                <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+
+                {{-- per confermare le modifiche --}}
+                <button type="submit" class="btn btn-success">Confirm</button>
+
             </form>
+            {{-- per eliminare il prodotto --}}
+            {{-- <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form> --}}
         </div>
         <section class="poster">
 

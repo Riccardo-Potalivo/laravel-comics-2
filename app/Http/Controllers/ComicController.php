@@ -57,7 +57,7 @@ class ComicController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Comic  $comic
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View;
      */
     public function show(Comic $comic)
     {
@@ -68,23 +68,32 @@ class ComicController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Comic  $comic
-     * @return \Illuminate\Http\Response
+     *
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comic  $comic
+     * @param  \App\Models\Comic $comic
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+        $formData = $request->all();
+
+        $comic->title = $formData['title'];
+        $comic->description = $formData['description'];
+        $comic->price = $formData['price'];
+        $comic->type = $formData['type'];
+
+        $comic->update();
+
+        return to_route('comics.show', $comic->id);
     }
 
     /**
