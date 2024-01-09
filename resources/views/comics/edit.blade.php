@@ -20,15 +20,15 @@
 
                 {{-- per confermare le modifiche --}}
                 <button type="submit" class="btn btn-success">Confirm</button>
-
             </form>
-            {{-- per eliminare il prodotto --}}
-            {{-- <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+            <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Delete</button>
-            </form> --}}
+            </form>
         </div>
+
+        {{-- per eliminare il prodotto --}}
         <section class="poster">
 
 
