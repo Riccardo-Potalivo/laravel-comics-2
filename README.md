@@ -23,6 +23,11 @@ Iniziate a definire le prime operazioni CRUD con le relative view dove necessari
 -   create()
 -   store() (solo dump dei dati)
 
+### Milestone 3
+
+-   impostare la logica per modificare un prodotto
+-   impostare la logica per eliminare un prodotto
+
 ### Bonus:
 
 Procedere con il salvataggio dei dati sul db
