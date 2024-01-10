@@ -37,20 +37,11 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $formData = $request->all();
-        $newComic = new Comic();
-        $newComic->title = $formData['title'];
-        $newComic->description = $formData['description'];
-        $newComic->thumb = 'https://picsum.photos/id/' . random_int(1, 200) . '/200/300';
-        $newComic->price = $formData['price'];
-        $newComic->sale_date = '2023-12-12';
-        $newComic->series = $formData['series'];
-        $newComic->type = $formData['type'];
 
-        $newComic->save();
+        $newComic = Comic::create($formData);
 
-        return to_route('comics.index');
+        return to_route('comics.show', $newComic->id);
     }
 
     /**
@@ -86,13 +77,7 @@ class ComicController extends Controller
     {
         $formData = $request->all();
 
-        $comic->title = $formData['title'];
-        $comic->description = $formData['description'];
-        $comic->thumb = $formData['thumb'];
-        $comic->price = $formData['price'];
-        $comic->sale_date = $formData['sale_date'];
-        $comic->series = $formData['series'];
-        $comic->type = $formData['type'];
+        $comic->fill($formData);
 
         $comic->update();
 

@@ -19,16 +19,24 @@
                                 <input type="text" class="form-control" id="title" name="title" required>
                             </div>
                             <div class="mb-3">
+                                @php
+                                    $img = 'https://picsum.photos/id/' . random_int(1, 200) . '/200/300';
+                                @endphp
                                 <label for="thumb" class="form-label">Thumb</label>
-                                <input type="text" class="form-control" id="thumb" name="thumb">
+                                <input type="text" class="form-control" id="thumb" name="thumb"
+                                    value="{{ $img }}">
                             </div>
                             <div class="mb-3">
                                 <label for="price" class="form-label">Price</label>
                                 <input type="text" class="form-control" id="price" name="price" required>
                             </div>
                             <div class="mb-3">
-                                <label for="sale_date" class="form-label">Sale_date</label>
-                                <input type="text" class="form-control" id="sale_date" name="sale_date" required>
+                                @php
+                                    $date = date('Y-m-d');
+                                @endphp
+                                <label for="sale_date" class="form-label">Sale date</label>
+                                <input type="text" class="form-control" id="sale_date" name="sale_date"
+                                    value="{{ $date }}" readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="series" class="form-label">Series</label>
@@ -36,7 +44,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="type" class="form-label">Type</label>
-                                <input type="text" class="form-control" id="type" name="type" required>
+                                <input type="text" class="form-control" id="type" name="type" value="comic book"
+                                    readonly>
                             </div>
                         </div>
                         <div class="mb-3 col-12 col-lg-6 d-flex flex-column ">
