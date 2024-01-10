@@ -11,8 +11,13 @@
                 <h2>Add Series
                     <a class="btn btn-primary" href="{{ route('comics.create') }}" role="button">New</a>
                 </h2>
-
             </div>
+
+            {{-- messaggio di verifica eliminazione prodotto --}}
+            @if (session()->has('message'))
+                <div class="alert alert-success">{{ session()->get('message') }}</div>
+            @endif
+
             <div class="row">
                 @foreach ($comics as $comic)
                     <div class="col-6 col-md-4 col-lg-3 col-xxl-2 p-3">

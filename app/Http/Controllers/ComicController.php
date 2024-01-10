@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
-use Illuminate\Http\View;
+use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
 
 class ComicController extends Controller
 {
@@ -35,23 +36,11 @@ class ComicController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
-
-        $request->validate([
-            'title' => 'required|min:3|max:255',
-            'description' => 'max:5000',
-            'thumb' => 'required|max:255',
-            'price' => 'required|numeric',
-            'sale_date' => 'date',
-            'series' => 'required|max:100',
-            'type' => 'required|max:30'
-
-        ]);
-        $formData = $request->all();
+        $formData = $request->validated();
 
         $newComic = Comic::create($formData);
-
 
         return to_route('comics.show', $newComic->id);
     }
@@ -85,9 +74,9 @@ class ComicController extends Controller
      * @param  \App\Models\Comic $comic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(UpdateComicRequest $request, Comic $comic)
     {
-        $formData = $request->all();
+        $formData = $request->validated();
 
         $comic->fill($formData);
 
@@ -106,6 +95,6 @@ class ComicController extends Controller
     {
         $comic->delete();
 
-        return to_route('comics.index');
+        return to_route('comics.index')->with('message', "Il prodotto $comic->title è stato eliminato");
     }
 }
