@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Http\View;
 
 class ComicController extends Controller
 {
@@ -33,13 +34,24 @@ class ComicController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'description' => 'max:5000',
+            'thumb' => 'required|max:255',
+            'price' => 'required|numeric',
+            'sale_date' => 'date',
+            'series' => 'required|max:100',
+            'type' => 'required|max:30'
+
+        ]);
         $formData = $request->all();
 
         $newComic = Comic::create($formData);
+
 
         return to_route('comics.show', $newComic->id);
     }
