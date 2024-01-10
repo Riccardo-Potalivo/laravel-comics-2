@@ -93,9 +93,7 @@
                                 </textarea>
 
                                 @error('description')
-                                    <div id="description" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                    <div id="description" class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -103,16 +101,40 @@
 
                     </div>
                     {{-- per confermare le modifiche --}}
-                    <button type="submit" class="btn btn-success">Confirm</button>
                     <button type="reset" class="btn btn-secondary">Reset</button>
-                </form>
-                <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-success">Confirm</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#delete_button">Delete</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="delete_button" tabindex="-1" aria-labelledby="delete_button_label"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="delete_button_label">Conferma</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Cliccando su confirm il prodotto verrà eliminato.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Confirm</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
+
 
     </main>
 
