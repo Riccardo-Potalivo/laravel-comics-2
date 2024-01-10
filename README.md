@@ -28,6 +28,11 @@ Iniziate a definire le prime operazioni CRUD con le relative view dove necessari
 -   impostare la logica per modificare un prodotto
 -   impostare la logica per eliminare un prodotto
 
+### Milestone 4
+
+-   impostare la verifica dei dati server side
+-   stampare in pagina le risposta degli errori della verifica
+
 ### Bonus:
 
-Procedere con il salvataggio dei dati sul db
+-   Procedere con il salvataggio dei dati sul db
