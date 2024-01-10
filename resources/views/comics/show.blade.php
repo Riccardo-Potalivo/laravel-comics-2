@@ -17,16 +17,22 @@
         <section>
             <div class="container">
                 <div class="d-flex justify-content-between ">
-                    <h2 class="text-uppercase ">{{ $comic->title }}</h2>
-
-                    <h2>
-                        <a class="btn btn-primary" href="{{ route('comics.edit', $comic->id) }}">Edit Comic</a>
-                    </h2>
                 </div>
-                <h3>{{ $comic->type }}</h3>
+                <div class="row">
 
-                <p>{{ $comic->description }}</p>
-                <p>{{ $comic->price }}</p>
+                    <div class="col-12 col-md-4 my-4">
+                        <h2 class="text-uppercase ">{{ $comic->title }}</h2>
+                        <h4>Type: {{ $comic->type }}</h3>
+                            <h4>Price: ${{ $comic->price }}</h4>
+                            <h2>
+                                <a class="btn btn-primary" href="{{ route('comics.edit', $comic->id) }}">Edit Comic</a>
+                            </h2>
+                    </div>
+                    <div class="col-12 col-md-8 my-4 border-start border-primary border-3">
+                        <h5>Description:</h5>
+                        <p>{{ $comic->description }}</p>
+                    </div>
+                </div>
             </div>
         </section>
 
